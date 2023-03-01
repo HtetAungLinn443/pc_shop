@@ -1,5 +1,7 @@
 @extends('user.layouts.index')
 
+@section('title', 'Product List')
+
 @section('content')
     <section class="product__container">
         <div class="product__main">

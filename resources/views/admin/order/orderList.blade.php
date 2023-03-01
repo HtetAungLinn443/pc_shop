@@ -1,6 +1,6 @@
 @extends('admin.layout.index')
 
-@section('title', 'Order List')
+@section('title', 'Order List Page')
 
 @section('content')
     <main>

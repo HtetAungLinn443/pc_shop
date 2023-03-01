@@ -1,5 +1,7 @@
 @extends('user.layouts.index')
 
+@section('title', 'Contact')
+
 @section('content')
     <section class="contactPage">
         <h1>Contact Us</h1>
@@ -25,7 +27,8 @@
                     </div>
                     <div class="contactInput col-12 py-3">
                         <label for="message" class="form-label">Your Message</label>
-                        <textarea name="message" class=" form-control" id="message" cols="30" rows="10" placeholder="Ender Message"></textarea>
+                        <textarea name="message" class=" form-control" id="message" cols="30" rows="10" placeholder="Ender Message"
+                            autofocus></textarea>
                     </div>
                     <div class="contactBtn col-12">
                         <button class="sendBtn">Send Message</button>

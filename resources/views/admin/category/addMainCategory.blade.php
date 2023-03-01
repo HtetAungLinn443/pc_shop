@@ -17,7 +17,8 @@
                     @csrf
                     <label for="categoryName" class="form-label ">Category Name</label>
                     <input type="text" class="form-control @error('categoryName') is-invalid @enderror"
-                        name="categoryName" id="categoryName" placeholder="Ender Categorty Name">
+                        name="categoryName" id="categoryName" placeholder="Ender Categorty Name" autocomplete="categoryName"
+                        autofocus>
                     @error('categoryName')
                         <div class="error">{{ $message }}</div>
                     @enderror

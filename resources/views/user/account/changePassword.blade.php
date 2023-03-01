@@ -1,5 +1,7 @@
 @extends('user.layouts.index')
 
+@section('title', 'Account')
+
 @section('content')
     <section class="changePassword">
 
@@ -18,8 +20,9 @@
                 <div class="my-2">
                     <label for="oldPassword" class=" form-label">Old Password</label>
                     <div class="passwordContainer">
-                        <input type="password" name="oldPassword" id="oldPassword" class="form-control"
-                            placeholder="Ender Old Password">
+                        <input type="password" name="oldPassword" id="oldPassword"
+                            class="form-control @error('oldPassword') is-invalid @enderror" placeholder="Ender Old Password"
+                            autofocus>
                         <i class="fa fa-eye-slash old-toggle-icon"></i>
                     </div>
                     @error('oldPassword')
@@ -29,7 +32,8 @@
                 <div class="my-2">
                     <label for="newPassword" class=" form-label">New Password</label>
                     <div class="passwordContainer">
-                        <input type="password" name="newPassword" id="newPassword" class="form-control"
+                        <input type="password" name="newPassword" id="newPassword"
+                            class="form-control @error('newPassword') is-invalid @enderror"
                             placeholder="Ender New Password">
                         <i class="fa fa-eye-slash new-toggle-icon"></i>
                     </div>
@@ -40,7 +44,8 @@
                 <div class="my-2">
                     <label for="confirmPassword" class=" form-label">Confirm Password</label>
                     <div class="passwordContainer">
-                        <input type="password" name="confirmPassword" id="confirmPassword" class="form-control"
+                        <input type="password" name="confirmPassword" id="confirmPassword"
+                            class="form-control @error('confirmPassword') is-invalid @enderror"
                             placeholder="Ender Confirm Password">
                         <i class="fa fa-eye-slash confirm-toggle-icon"></i>
                     </div>

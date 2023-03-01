@@ -1,5 +1,7 @@
 @extends('user.layouts.index')
 
+@section('title', 'Privacy Policy')
+
 @section('content')
     <section class="cart">
         <div class="px-5">

@@ -1,6 +1,6 @@
 @extends('admin.layout.index')
 
-@section('title', 'Settings')
+@section('title', 'Change Password')
 
 @section('content')
     <main class="setting">

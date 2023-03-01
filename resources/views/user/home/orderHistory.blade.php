@@ -1,5 +1,7 @@
 @extends('user.layouts.index')
 
+@section('title', 'Order History')
+
 @section('content')
     <section class="orderList">
         <h1 class="text-center">Order History</h1>

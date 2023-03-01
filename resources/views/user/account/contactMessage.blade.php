@@ -1,5 +1,7 @@
 @extends('user.layouts.index')
 
+@section('title', 'Contact')
+
 @section('content')
     <section class="contactMessage">
         <h2 class="text-center">Contact Us</h2>

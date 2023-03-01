@@ -1,5 +1,7 @@
 @extends('user.layouts.index')
 
+@section('title', 'Profile')
+
 @section('content')
     <section class="editProfile">
         <form action="{{ route('user#editProfileData') }}" method="post" enctype="multipart/form-data">
@@ -10,7 +12,7 @@
                     <label for="name" class="form-label">Name</label>
                     <input type="text" name="name" id="name"
                         class="form-control @error('name') is-invalid @enderror" placeholder="Ender Your Name"
-                        value="{{ old('name', Auth::user()->name) }}">
+                        value="{{ old('name', Auth::user()->name) }}" autocomplete="name">
                     @error('name')
                         <small class="text-danger">{{ $message }}</small>
                     @enderror

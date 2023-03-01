@@ -1,5 +1,7 @@
 @extends('user.layouts.index')
 
+@section('title', 'Account')
+
 @section('content')
     <section class="accountList">
         <h2>My Account List</h2>

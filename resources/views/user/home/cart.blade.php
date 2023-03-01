@@ -1,5 +1,7 @@
 @extends('user.layouts.index')
 
+@section('title', 'Cart List')
+
 @section('content')
     <section class="cart">
         <h1 class="cart_title">Cart</h1>

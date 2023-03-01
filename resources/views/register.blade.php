@@ -23,7 +23,8 @@
                 <div class="username input-box">
                     <label for="username">User Name</label>
                     <input type="text" name="name" value="{{ old('name') }}"
-                        class=" @error('name') input-error @enderror" id="username" placeholder="Ender Your Name">
+                        class=" @error('name') input-error @enderror" id="username" placeholder="Ender Your Name"
+                        autocomplete="name" autofocus>
                     @error('name')
                         <small>{{ $message }}</small>
                     @enderror

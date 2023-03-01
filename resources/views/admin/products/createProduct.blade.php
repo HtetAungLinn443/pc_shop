@@ -1,6 +1,6 @@
 @extends('admin.layout.index')
 
-@section('title', 'Add Main Category Page')
+@section('title', 'Add Product Page')
 
 @section('content')
     <main class="addProduct">
@@ -24,7 +24,7 @@
                                         <label for="productName" class="form-label col-12">Name</label>
                                         <input type="text" name="productName" id="productName"
                                             class="form-control rounded col-12" placeholder="Product Name"
-                                            value="{{ old('productName') }}">
+                                            value="{{ old('productName') }}" autocomplete="productName" autofocus>
                                     </div>
                                     @error('productName')
                                         <div class="text-danger">{{ $message }}</div>

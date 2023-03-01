@@ -1,5 +1,7 @@
 @extends('user.layouts.index')
 
+@section('title', 'Product Details')
+
 @section('content')
     <!--========== Body Section ==========-->
     <div class="details__container">

@@ -21,7 +21,7 @@
                 <div class="email input-box">
                     <label for="email">Email</label>
                     <input type="email" name="email" id="email" value="{{ old('email') }}"
-                        placeholder="Ender Your Email">
+                        placeholder="Ender Your Email" autofocus autocomplete="email">
                     @error('email')
                         <small>{{ $message }}</small>
                     @enderror

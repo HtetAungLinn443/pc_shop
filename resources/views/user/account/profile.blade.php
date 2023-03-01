@@ -1,5 +1,7 @@
 @extends('user.layouts.index')
 
+@section('title', 'Profile')
+
 @section('content')
     <section class="userProfile">
 

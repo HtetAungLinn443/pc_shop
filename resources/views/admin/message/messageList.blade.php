@@ -1,6 +1,6 @@
 @extends('admin.layout.index')
 
-@section('title', 'Message List')
+@section('title', 'Message List Page')
 
 @section('content')
     <main>

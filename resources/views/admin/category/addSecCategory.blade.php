@@ -1,6 +1,6 @@
 @extends('admin.layout.index')
 
-@section('title', 'Order List')
+@section('title', 'Add Second Category Page')
 
 @section('content')
     <main class="addCategory">
@@ -18,7 +18,7 @@
                     <div class="my-2">
                         <label for="mainCategory">Mian Category</label>
                         <select name="firstCategory" id="mainCategory"
-                            class="form-control @error('firstCategory') is-invalid @enderror">
+                            class="form-control @error('firstCategory') is-invalid @enderror" autofocus>
                             <option value="">Select Main Category</option>
                             @foreach ($main as $m)
                                 <option value="{{ $m->id }}" {{ old('firstCategory') == $m->id ? 'selected' : '' }}>

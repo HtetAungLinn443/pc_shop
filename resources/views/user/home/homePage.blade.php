@@ -1,5 +1,7 @@
 @extends('user.layouts.index')
 
+@section('title', 'Home Page')
+
 @section('content')
     <!-- Body -->
     <section class="body px-3">
