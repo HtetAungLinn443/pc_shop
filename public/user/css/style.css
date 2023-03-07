@@ -218,6 +218,7 @@ section.body {
     border-radius: 10px;
     box-shadow: 0 0 10px var(--shadow-200);
     transition: 0.5s;
+    z-index: 1000;
 }
 
 .search-category h5 {
@@ -668,6 +669,9 @@ section.sale-item {
     width: 35px;
     height: 35px;
     border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: none;
     outline: none;
     background-color: var(--bg-light);
@@ -723,6 +727,9 @@ section.sale-item {
 .best-product-container .second-product .best-product .price .buy-btn {
     width: 100px;
     height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 20px;
     border: none;
     outline: none;
@@ -1825,11 +1832,12 @@ section.cart .orderBtn:active {
     }
     .ph-category {
         display: flex;
+        z-index: 1000;
     }
     .show {
         display: block;
         position: absolute;
-        z-index: 1;
+        z-index: 100;
         background-color: var(--bg-light);
         top: 10%;
         right: 10px;

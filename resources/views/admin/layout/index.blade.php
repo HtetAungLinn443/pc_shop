@@ -70,7 +70,7 @@
                         mail_outline
                     </span>
                     <h3>Messages</h3>
-                    <span class="message-count">26</span>
+
                 </a>
 
                 <a href="{{ route('admin#categoryList') }}"

@@ -30,10 +30,13 @@
                                         <img src="{{ asset('storage/' . $data->brand_image) }}" alt=""
                                             style="width:50px;">
                                     </div>
-                                    <div class="h5 mt-4">
-                                        <p>Price : {{ $data->price }} $</p>
+
+                                    <div class="mt-2 row">
+                                        <p class="col-4 h5 "><span>Price : {{ $data->price }} $</span></p>
+                                        <p class="col-4 text-muted fs-6 "><span>Stock Count :
+                                                {{ $data->stock_count }}</span></p>
                                     </div>
-                                    <div class="mt-4    ">
+                                    <div class="mt-4">
                                         <a href="{{ route('admin#editProduct', $data->id) }}" class="btn btn-primary">
                                             <i class="fa-solid fa-pen-to-square me-2"></i> Edit
                                         </a>

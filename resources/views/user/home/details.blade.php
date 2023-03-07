@@ -44,9 +44,10 @@
 
             <div class="details__cart">
 
-                <input type="number" class="product_count" name="product_count" value="1" min=0
-                    max="{{ $data->stock_count }}">
-                <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" id="add_card">
+                <input type="number" class="product_count" name="product_count" min=1 max="{{ $data->stock_count }}"
+                    @if ($data->stock_count == 0) value="0" @else value="1" @endif>
+                <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" id="add_card"
+                    @if ($data->stock_count == 0) disabled @endif>
                     <i class="fa-solid fa-cart-arrow-down me-2"></i> Add to cart
                 </button>
             </div>
@@ -107,6 +108,7 @@
     <!--========== Related Product ==========-->
     <div class="relatedPd__container">
         <!-- Swiper -->
+        <h4 class="py-2">Related Product</h4>
         <div class="swiper mySwiper">
             <div class="swiper-wrapper">
                 @foreach ($relative as $rel)
@@ -125,7 +127,7 @@
                                 <img src="{{ asset('storage/' . $rel->product_image) }}" alt="">
                             </div>
                             <div class="relatedPd__footer">
-                                <div class="relatedPd__price">{{ $rel->price }}</div>
+                                <div class="relatedPd__price">{{ $rel->price }} $</div>
                                 <a href="{{ route('user#productDetails', $rel->id) }}" class="relatedPd__Btn"><i
                                         class="fa-solid fa-cart-arrow-down"></i></a>
                             </div>

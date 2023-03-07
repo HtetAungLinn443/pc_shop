@@ -20,7 +20,7 @@
             </div>
             <div class="col-xl-9 col-lg-12">
 
-                <div class="slideshow-container">
+                <div class="slideshow-container z-0">
                     <div class="swiper headerSwiper mySwiper">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
@@ -116,7 +116,7 @@
         <div class="item-container">
             <div class="select-item-box">
                 <p class="select-item active">Featured</p>
-                <p class="select-item ">On Sale</p>
+
             </div>
         </div>
         <div class="product-container">
@@ -142,8 +142,7 @@
         <div class="item-container mt-5">
             <div class="select-item-box">
                 <p class="select-item active">Best Deals</p>
-                <p class="select-item ">Notebooks</p>
-                <p class="select-item ">Computers</p>
+
             </div>
         </div>
         <div class="best-product-container ">
@@ -155,7 +154,7 @@
                             <div class="category">
                                 {{ $bestDeal[0]->main_category }}, {{ $bestDeal[0]->second_category }}
                             </div>
-                            <div class="title">
+                            <div class="title text-dark">
                                 {{ $bestDeal[0]->name }}
                             </div>
                         </div>
@@ -163,8 +162,10 @@
                             <img src="{{ asset('storage/' . $bestDeal[0]->product_image) }}">
                         </div>
                         <div class="price">
-                            <p>{{ $bestDeal[0]->price }} $</p>
-                            <button class="buy-btn"><i class="fa-solid fa-arrow-right-long"></i></button>
+                            <p class="text-dark">{{ $bestDeal[0]->price }} $</p>
+                            <a href="{{ route('user#productDetails', $bestDeal[0]->id) }}"
+                                class="buy-btn text-decoration-none"><i class="fa-solid fa-arrow-right-long"></i></a>
+
                         </div>
                     </div>
                 @endif
@@ -183,7 +184,8 @@
                         </div>
                         <div class="price">
                             <p>{{ $bestDeal[1]->price }} $</p>
-                            <button class="buy-btn"><i class="fa-solid fa-arrow-right-long"></i></button>
+                            <a href="{{ route('user#productDetails', $bestDeal[1]->id) }}"
+                                class="buy-btn text-decoration-none"><i class="fa-solid fa-arrow-right-long"></i></a>
                         </div>
                     </div>
                 @endif
@@ -202,7 +204,8 @@
                         </div>
                         <div class="price">
                             <p>{{ $bestDeal[2]->price }} $</p>
-                            <button class="buy-btn"><i class="fa-solid fa-arrow-right-long"></i></button>
+                            <a href="{{ route('user#productDetails', $bestDeal[2]->id) }}"
+                                class="buy-btn text-decoration-none"><i class="fa-solid fa-arrow-right-long"></i></a>
                         </div>
                     </div>
                 @endif
@@ -221,7 +224,8 @@
                         </div>
                         <div class="price">
                             <p>{{ $bestDeal[3]->price }} $</p>
-                            <button class="buy-btn"><i class="fa-solid fa-arrow-right-long"></i></button>
+                            <a href="{{ route('user#productDetails', $bestDeal[3]->id) }}"
+                                class="buy-btn text-decoration-none"><i class="fa-solid fa-arrow-right-long"></i></a>
                         </div>
                     </div>
                 @endif
@@ -243,7 +247,8 @@
                         </div>
                         <div class="price">
                             <p>{{ $bestDeal[4]->price }} $</p>
-                            <button class="buy-btn"><i class="fa-solid fa-arrow-right-long"></i></button>
+                            <a href="{{ route('user#productDetails', $bestDeal[4]->id) }}"
+                                class="buy-btn text-decoration-none"><i class="fa-solid fa-arrow-right-long"></i></a>
                         </div>
                     </div>
                 @endif
@@ -266,7 +271,8 @@
                         </div>
                         <div class="price">
                             <p>{{ $bestDeal[5]->price }} $</p>
-                            <button class="buy-btn"><i class="fa-solid fa-arrow-right-long"></i></button>
+                            <a href="{{ route('user#productDetails', $bestDeal[5]->id) }}"
+                                class="buy-btn text-decoration-none"><i class="fa-solid fa-arrow-right-long"></i></a>
                         </div>
                     </div>
                 @endif
@@ -285,7 +291,8 @@
                         </div>
                         <div class="price">
                             <p>{{ $bestDeal[6]->price }} $</p>
-                            <button class="buy-btn"><i class="fa-solid fa-arrow-right-long"></i></button>
+                            <a href="{{ route('user#productDetails', $bestDeal[6]->id) }}"
+                                class="buy-btn text-decoration-none"><i class="fa-solid fa-arrow-right-long"></i></a>
                         </div>
                     </div>
                 @endif
@@ -304,7 +311,8 @@
                         </div>
                         <div class="price">
                             <p>{{ $bestDeal[7]->price }} $</p>
-                            <button class="buy-btn"><i class="fa-solid fa-arrow-right-long"></i></button>
+                            <a href="{{ route('user#productDetails', $bestDeal[7]->id) }}"
+                                class="buy-btn text-decoration-none"><i class="fa-solid fa-arrow-right-long"></i></a>
                         </div>
                     </div>
                 @endif
@@ -323,7 +331,8 @@
                         </div>
                         <div class="price">
                             <p>{{ $bestDeal[8]->price }} $</p>
-                            <button class="buy-btn"><i class="fa-solid fa-arrow-right-long"></i></button>
+                            <a href="{{ route('user#productDetails', $bestDeal[8]->id) }}"
+                                class="buy-btn text-decoration-none"><i class="fa-solid fa-arrow-right-long"></i></a>
                         </div>
                     </div>
                 @endif
@@ -340,13 +349,16 @@
                         <a href="#" class="category-btn active">Top 8</a>
                     </li>
                     <li>
-                        <a href="#" class="category-btn">Smart Switches</a>
+                        <a href="{{ route('user#filterSecond', 'Smart Switches') }}" class="category-btn">Smart
+                            Switches</a>
                     </li>
                     <li>
-                        <a href="#" class="category-btn">Smart Speakers</a>
+                        <a href="{{ route('user#filterSecond', 'Smart Speakers') }}" class="category-btn">Smart
+                            Speakers</a>
                     </li>
                     <li>
-                        <a href="#" class="category-btn">Robotic Vacuums</a>
+                        <a href="{{ route('user#filterSecond', 'Robotic Vacuums') }}" class="category-btn">Robotic
+                            Vacuums</a>
                     </li>
                 </ul>
             </div>

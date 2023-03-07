@@ -26,11 +26,18 @@
                     </div>
                 </div>
             </div>
-
+            @if (session('deleteOrder'))
+                <div class=" offset-6 col-md-6 ">
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <i class="fa-solid fa-triangle-exclamation me-3"></i>{{ session('deleteOrder') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                </div>
+            @endif
             @if ($orders->total() == 0)
                 <h1 class="text-center py-4 my-5 bg-warning rounded text-danger shadow">There is No Order</h1>
             @else
-                <div class="">
+                <div class="pagination__color">
                     {{ $orders->links() }}
                 </div>
                 <table class="order__table">
@@ -72,37 +79,15 @@
                                         Hold
                                     @endif
                                 </td>
-                                <td>
+                                <td class="d-flex gap-1">
                                     <a href="{{ route('admin#orderDetailsPage', $order->order_id) }}"
                                         class="order__details"><i class="fa-solid fa-eye"></i></a>
-                                    <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal"
-                                        data-bs-target="#exampleModal">
+                                    <a href="{{ route('admin#deleteOrder', $order->order_id) }}"
+                                        class="btn btn-sm btn-danger">
                                         <i class="fa-solid fa-trash-can"></i>
-                                    </button>
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="exampleModal" tabindex="-1"
-                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Confirm Cart</h1>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body ">
-                                                    <input type="hidden" id="orderId" value="{{ $order->order_id }}">
-                                                    <div class="alert alert-danger">Are You Sure Delete This
-                                                        Order
-                                                    </div>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary"
-                                                        data-bs-dismiss="modal">Close</button>
-                                                    <button type="button" class="btn btn-primary deleteOrder"></button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    </a>
+
+
                                 </td>
 
                             </tr>
@@ -115,17 +100,4 @@
         </div>
     </main>
 
-@endsection
-
-@section('script')
-    <script>
-        $(document).ready(function() {
-            $('.deleteOrder').click(function() {
-                $parent = $(this).parents('tr');
-                $id = $parent.find('.orderId').html();
-                $id = $('#orderId').val();
-                console.log($id);
-            })
-        })
-    </script>
 @endsection

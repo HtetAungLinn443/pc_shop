@@ -6,11 +6,7 @@
     <main class="addProduct">
 
         <div class=" p-5 shadow rounded">
-            <div class="back-btn" onclick="history.back()">
-                <a href="">
-                    <i class="fa-solid fa-arrow-left"></i>
-                </a>
-            </div>
+
             <div class="row justify-content-center">
                 <div class="card-header text-center h2 createProductTitle">Edit Product Page</div>
 
@@ -214,4 +210,5 @@
             </div>
         </div>
     </main>
+    <input type="hidden" name="product_id" value="{{ $data->id }}">
 @endsection

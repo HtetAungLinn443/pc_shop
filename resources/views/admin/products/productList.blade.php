@@ -44,9 +44,10 @@
                 @endif
 
                 <div class="porduct__list-container">
-
+                    <div class="">
+                        {{ $products->links() }}
+                    </div>
                     <div class="product__list">
-
 
                         @if ($products->total() != 0)
                             @foreach ($products as $product)

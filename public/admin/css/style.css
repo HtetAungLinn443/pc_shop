@@ -1889,3 +1889,10 @@ main .recent-orders a {
         display: none;
     }
 }
+
+
+/* Bootstrap Pagination */
+
+.pagination__color {
+    color: var(--color-dark);
+}

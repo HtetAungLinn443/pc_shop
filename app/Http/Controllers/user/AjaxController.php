@@ -14,6 +14,11 @@ class AjaxController extends Controller
     //add to card
     public function addToCard(Request $request)
     {
+        $originalSaleCount = Product::where('id', $request->product_id)->first();
+        $saleCount = [
+            'sale_count' => $originalSaleCount->sale_count + 1,
+        ];
+        Product::where('id', $request->product_id)->update($saleCount);
         $data = [
             'user_id' => $request->user_id,
             'product_id' => $request->product_id,

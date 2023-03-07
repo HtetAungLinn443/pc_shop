@@ -42,6 +42,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('orderList', [OrderController::class, 'orderList'])->name('admin#orderList');
             Route::get('order/details/{id}', [OrderController::class, 'orderDetailsPage'])->name('admin#orderDetailsPage');
             Route::get('orderStatusChange', [OrderController::class, 'orderStatusChange']);
+            Route::get('delete/order/{id}', [OrderController::class, 'deleteOrder'])->name('admin#deleteOrder');
         });
 
         // Message
@@ -96,8 +97,10 @@ Route::middleware(['auth'])->group(function () {
 
     // user
     Route::group(['prefix' => 'user', 'middleware' => 'user_auth'], function () {
+
         Route::get('homePage', [UserController::class, 'homePage'])->name('user#homePage');
-        Route::get('filterCategory/{name}', [UserController::class, 'filterCategory'])->name('user#filterCategory');
+        Route::get('filter/mainCategory/{name}', [UserController::class, 'filterCategory'])->name('user#filterCategory');
+        Route::get('filter/secondCategory/{name}', [UserController::class, 'filterSecondCategory'])->name('user#filterSecond');
         Route::get('productDetails/{id}', [UserController::class, 'productDetails'])->name('user#productDetails');
         Route::get('search/product', [UserController::class, 'searchProduct'])->name('user#searchProduct');
 

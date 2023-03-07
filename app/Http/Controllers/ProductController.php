@@ -8,6 +8,7 @@ use App\Models\ProductOtherData;
 use App\Models\SecondCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Storage;
 
 class ProductController extends Controller
 {
@@ -20,7 +21,7 @@ class ProductController extends Controller
                 ->orWhere('products.second_category', 'like', '%' . request('searchData') . '%')
                 ->orWhere('products.brand_name', 'like', '%' . request('searchData') . '%');
 
-        })->paginate('10');
+        })->orderBy('id', 'desc')->paginate('12');
 
         return view('admin.products.productList', compact('products'));
     }
@@ -69,21 +70,11 @@ class ProductController extends Controller
     // product Details Page
     public function productDetails($id)
     {
-        // $data = Product::select('products.*', 'product_other_data.main', 'product_other_data.data', 'product_other_data.other_name', 'product_other_data.item')
-        //     ->where('products.id', $id)
-        //     ->leftJoin('product_other_data', 'product_other_data.mainId', 'products.mainId')
-        //     ->get();
+
         $data = Product::where('id', $id)->first();
         $mainId = $data->mainId;
         $otherData = ProductOtherData::where('mainId', $mainId)->get();
 
-        // for ($i = 0; $i < $otherData->count(); $i++) {
-        //     if ($otherData[$i]->item == $otherData[$i + 1]->item) {
-        //         $array = [];
-        //         array_push($array, $otherData[$i]);
-
-        //     }
-        // }
         return view('admin.products.details', compact('data', 'otherData'));
     }
 
@@ -102,8 +93,9 @@ class ProductController extends Controller
         $mains = MainCategory::get();
         $seconds = SecondCategory::get();
 
-        $data = Product::where('products.id', $id)->first();
+        $data = Product::where('id', $id)->first();
         $otherData = ProductOtherData::where('mainId', $data->mainId)->get();
+
         return view('admin.products.edit', compact('mains', 'seconds', 'data', 'otherData'));
     }
 
@@ -134,6 +126,32 @@ class ProductController extends Controller
         ])->validate();
 
         $productData = $this->insertPorductData($request);
+
+        // update Product Image
+        if ($request->hasFile('productImage')) {
+            $dbProductImg = Product::select('product_image')->where('id', $request->id)->get();
+
+            if ($dbProductImg != null) {
+                Storage::delete('public/' . $dbProductImg);
+            }
+
+            $productImgName = uniqid() . $request->file('productImage')->getClientOriginalName();
+            $request->file('productImage')->storeAs('public', $productImgName);
+            $productData['product_image'] = $productImgName;
+        }
+
+        // Update Brand Image
+        if ($request->hasFile('brandImage')) {
+            $dbBrandImg = Product::select('brand_image')->where('id', $request->id)->get();
+
+            if ($dbBrandImg != null) {
+                Storage::delete('public/' . $dbBrandImg);
+            }
+
+            $brandImgName = uniqid() . $request->file('brandImage')->getClientOriginalName();
+            $request->file('brandImage')->storeAs('public', $brandImgName);
+            $productData['brand_image'] = $brandImgName;
+        }
 
         foreach ($request->mainName as $key => $item) {
             $otherData = [

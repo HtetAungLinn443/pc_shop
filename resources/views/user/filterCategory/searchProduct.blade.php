@@ -7,9 +7,16 @@
         <div class="product__main">
 
             <div class="product__itemData">
-
+                <div class="product__item-title">
+                    <h4>{{ $filterCategory[0]->second_category }}</h4>
+                </div>
                 @if ($filterCategory->count() != 0)
+                    <div class="my-2">
+                        {{ $filterCategory->links() }}
+                    </div>
+
                     <div class="product__item-container ">
+
                         @foreach ($filterCategory as $fc)
                             <div class="product__item-box">
                                 <div class="product__item-category">

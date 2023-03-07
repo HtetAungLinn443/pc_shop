@@ -8,10 +8,8 @@
             <div class="product__category">
 
                 <ul class="main-category">
-
                     <li>
                         <a href="{{ route('user#homePage') }}">Home Page</a>
-
                     </li>
                     </li>
                     @foreach ($mainCategory as $main)
@@ -23,11 +21,13 @@
                 </ul>
             </div>
             <div class="product__item">
-                <div class="product__item-title">
-                    <h4>{{ $filterCategory[0]->main_category }}</h4>
-                </div>
-                <div class="product__item-container">
-                    @if ($filterCategory->count() != 0)
+
+                @if ($filterCategory->count() != 0)
+                    <div class="product__item-title">
+                        <h4>{{ $filterCategory[0]->main_category }}</h4>
+                    </div>
+                    {{ $filterCategory->links() }}
+                    <div class="product__item-container">
                         @foreach ($filterCategory as $fc)
                             <div class="product__item-box">
                                 <div class="product__item-category">
@@ -45,10 +45,11 @@
                                 </div>
                             </div>
                         @endforeach
-                    @else
-                        There is no product
-                    @endif
-                </div>
+
+                    </div>
+                @else
+                    There is no product
+                @endif
             </div>
         </div>
     </section>

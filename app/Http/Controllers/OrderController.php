@@ -14,7 +14,7 @@ class OrderController extends Controller
     public function orderList()
     {
         $orders = Order::select('orders.*', 'users.email', 'products.name as product_name', 'products.*', 'orders.id as order_id')
-            ->orderBy('orders.id', 'asc')
+            ->orderBy('orders.id', 'desc')
             ->leftJoin('users', 'users.id', 'orders.user_id')
             ->leftJoin('products', 'products.id', 'orders.product_id')
             ->paginate('8');
@@ -22,6 +22,12 @@ class OrderController extends Controller
         $totalPanding = Order::where('status', '0')->count();
         $totalHold = Order::where('status', '2')->count();
         return view('admin.order.orderList', compact('orders', 'totalDeliver', 'totalPanding', 'totalHold'));
+    }
+    //
+    public function deleteOrder($id)
+    {
+        Order::where('id', $id)->delete();
+        return back()->with(['deleteOrder' => 'Order Delete Success!']);
     }
     // order Details Page
     public function orderDetailsPage($id)
@@ -45,7 +51,7 @@ class OrderController extends Controller
         $cart = Cart::where('user_id', Auth::user()->id)->get()->count();
         $orderList = Order::select('orders.*', 'products.*')
             ->join('products', 'orders.product_id', 'products.id')
-            ->where('user_id', Auth::user()->id)->get();
+            ->where('user_id', Auth::user()->id)->orderBy('orders.created_at', 'desc')->get();
 
         return view('user.home.orderList', compact('cart', 'orderList'));
     }

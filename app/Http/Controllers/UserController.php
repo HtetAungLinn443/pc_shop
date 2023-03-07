@@ -14,26 +14,34 @@ class UserController extends Controller
     //
     public function homePage()
     {
-        $main = MainCategory::get();
-        $allProducts = Product::orderBy('id', 'asc')->take(10)->get();
-        $bestDeal = Product::orderBy('price', 'desc')->take(9)->get(); //->groupBy('second_category') to add
+        $main = MainCategory::orderBy('name', 'asc')->get();
+        $allProducts = Product::orderBy('sale_count', 'desc')->take(10)->get();
+        $bestDeal = Product::orderBy('price', 'desc')->groupBy('second_category')->take(9)->get();
         $homeProducts = Product::where('main_category', 'Smart Home')->take(8)->get();
-        $newProducts = Product::orderBy('id', 'desc')->take(9)->get();
+        $newProducts = Product::orderBy('id', 'desc')->take(10)->get();
         $cart = Cart::where('user_id', Auth::user()->id)->get()->count();
 
         return view('user.home.homePage', compact('main', 'allProducts', 'bestDeal', 'homeProducts', 'newProducts', 'cart'));
     }
 
-    // filter Category
+    // filter main Category
     public function filterCategory($name)
     {
-        $filterCategory = Product::where('main_category', $name)->get();
-        $mainCategory = MainCategory::get();
+        $filterCategory = Product::where('main_category', $name)->paginate(10);
+        $mainCategory = MainCategory::orderBy('name', 'asc')->get();
+
         $cart = Cart::where('user_id', Auth::user()->id)->get()->count();
 
         return view('user.filterCategory.filterCategory', compact('filterCategory', 'mainCategory', 'cart'));
     }
+    // Filter Second Category
+    public function filterSecondCategory($name)
+    {
+        $filterCategory = Product::where('second_category', $name)->paginate(10);
+        $cart = Cart::where('user_id', Auth::user()->id)->get()->count();
 
+        return view('user.filterCategory.searchProduct', compact('cart', 'filterCategory'));
+    }
     // Product Details
     public function productDetails($id)
     {
@@ -54,9 +62,9 @@ class UserController extends Controller
                 ->orWhere('products.brand_name', 'like', '%' . request('searchData') . '%')
                 ->orWhere('products.main_category', 'like', '%' . request('searchData') . '%')
                 ->orWhere('products.second_category', 'like', '%' . request('searchData') . '%');
-        })->get();
+        })->paginate(10);
 
-        $mainCategory = MainCategory::get();
+        $mainCategory = MainCategory::orderBy('name', 'asc')->get();
         $cart = Cart::where('user_id', Auth::user()->id)->get()->count();
         return view('user.filterCategory.searchProduct', compact('filterCategory', 'mainCategory', 'cart'));
     }

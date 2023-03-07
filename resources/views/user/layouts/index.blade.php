@@ -135,20 +135,18 @@
             <div class="second">
                 <div class="pop">
                     <h5>Popular Categories</h5>
-                    <a href="">Notebooks</a>
-                    <a href="">Electronics</a>
-                    <a href="">Computers</a>
-                    <a href="">E-Book Readers</a>
-                    <a href="">PCShop Desktops</a>
+                    <a href="{{ route('user#filterSecond', 'Notebooks') }}">Notebooks</a>
+                    <a href="{{ route('user#filterCategory', 'Electronics') }}">Electronics</a>
+                    <a href="{{ route('user#filterCategory', 'Computer') }}">Computers</a>
+
                 </div>
                 <div class="pc">
                     <h5>PC Components</h5>
-                    <a href="">Motherboards</a>
-                    <a href="">CPU</a>
-                    <a href="">RAM</a>
-                    <a href=""></a>
-                    <a href="">SSD</a>
-                    <a href="">Cases</a>
+                    <a href="{{ route('user#filterSecond', 'Motherboards') }}">Motherboards</a>
+                    <a href="{{ route('user#filterSecond', 'CPU') }}">CPU</a>
+                    <a href="{{ route('user#filterSecond', 'RAM') }}">RAM</a>
+                    <a href="{{ route('user#filterSecond', 'SSD') }}">SSD</a>
+                    <a href="{{ route('user#filterSecond', 'Cases') }}">Cases</a>
                 </div>
                 <div class="help">
                     <h5>Help</h5>
@@ -167,7 +165,7 @@
                         Popular Categories
                     </button>
                     <ul class="dropdown-menu dropdown-menu-light col-12">
-                        <li><a class="dropdown-item" href="#">Notebooks</a></li>
+                        <li><a class="dropdown-item" href="">Notebooks</a></li>
                         <li><a class="dropdown-item" href="#">Electronics</a></li>
                         <li><a class="dropdown-item" href="#">Computers</a></li>
                         <li><a class="dropdown-item" href="#">E-Book Readers</a></li>
@@ -191,7 +189,7 @@
         <div class="bot-footer">
             <div class="bg">
                 <p>© PCShop.ge - All Rights Reserved</p>
-                <img src="../image/patment-ico3231n.png" alt="">
+                <img src="{{ asset('image/patment-ico3231n.png') }}" alt="">
             </div>
         </div>
     </footer>
