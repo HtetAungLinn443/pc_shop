@@ -74,7 +74,7 @@ class ProductController extends Controller
         $data = Product::where('id', $id)->first();
         $mainId = $data->mainId;
         $otherData = ProductOtherData::where('mainId', $mainId)->get();
-
+        // dd($otherData->toArray());
         return view('admin.products.details', compact('data', 'otherData'));
     }
 

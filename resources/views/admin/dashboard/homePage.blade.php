@@ -54,15 +54,7 @@
                         <h3>Total Income</h3>
                         <h1>${{ $totalIncome }}</h1>
                     </div>
-                    {{-- <div class="progress-circle">
-                        <div class="c100 p44 center">
-                            <span>44%</span>
-                            <div class="slice">
-                                <div class="bar"></div>
-                                <div class="fill"></div>
-                            </div>
-                        </div>
-                    </div> --}}
+
                 </div>
 
             </div>

@@ -185,7 +185,7 @@ class SettingController extends Controller
     public function contactMessagePage()
     {
         $cart = Cart::where('user_id', Auth::user()->id)->get()->count();
-        $message = Message::where('user_id', Auth::user()->id)->first();
+        $message = Message::where('user_id', Auth::user()->id)->get();
         return view('user.account.contactMessage', compact('cart', 'message'));
     }
 
