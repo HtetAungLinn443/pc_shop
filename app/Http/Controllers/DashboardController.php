@@ -17,13 +17,12 @@ class DashboardController extends Controller
         } else {
             $allProducts = 0;
         }
-        $allProducts = Product::select('price', 'stock_count')->get();
 
         // for total sale
         $eachAmount = Order::select('total_amount')
             ->where('status', '1')
             ->get();
-        // dd($eachAmount);
+
         $totalSale = 0;
         foreach ($eachAmount as $each) {
             $totalSale += $each->total_amount;
@@ -39,12 +38,10 @@ class DashboardController extends Controller
             $Expenses = $totalSale / $totalExpenses;
         } else {
             $Expenses = $totalSale / 1;
-
         }
         $ExpensesPercent = 100 - floor($Expenses * 100);
         $totalSalePercent = floor($Expenses * 100);
-        $ExpensesPercent = 0;
-        $totalSalePercent = 0;
+
         // For Income
 
         $orderSuccessCount = Order::where('status', '1')->count();
